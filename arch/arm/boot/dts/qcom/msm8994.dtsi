@@ -41,6 +41,30 @@
 		qup2 = &i2c_2;
 	};
 
+system {
+     compatible = "android,system,vendor";
+     dev = "/dev/block/platform/soc.0/f9824900.sdhci/by-name/system";
+     type = "ext4";
+     mnt_flags = "ro,barrier=1,inode_readahead_blks=8";
+     fsmgr_flags = "wait";
+    };
+
+	firmware {
+		android {
+			compatible = "android,firmware";
+			fstab {
+				compatible = "android,fstab";
+				vendor {
+					compatible = "android,vendor";
+					dev = "/dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor";
+					type = "ext4";
+					mnt_flags = "ro,barrier=1,inode_readahead_blks=8";
+					fsmgr_flags = "wait";
+				};
+			};
+		};
+	};
+
 	cpus {
 		#address-cells = <1>;
 		#size-cells = <0>;
